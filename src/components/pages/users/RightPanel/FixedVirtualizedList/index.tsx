@@ -76,10 +76,17 @@ const FixedVirtualizedList = ({
         itemCount={data.length}
         overscanCount={5}
         itemData={data}
+        // to be seen later on
+        onScroll={onChange}
       >
         {renderRow}
       </FixedSizeList>
     </Box>
   );
 };
+
 export default FixedVirtualizedList;
+
+FixedVirtualizedList.defaultProps = {
+  onChange: () => {},
+};

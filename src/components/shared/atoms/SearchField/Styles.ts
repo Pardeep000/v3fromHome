@@ -4,7 +4,7 @@ import { makeStyles } from "tss-react/mui";
 import InputBase from "@mui/material/InputBase";
 import { styled } from "@mui/material/styles";
 
-const useStyles = makeStyles()((theme) => ({
+const useStyles = makeStyles()(() => ({
   search: {
     position: "relative",
     borderRadius: 3,

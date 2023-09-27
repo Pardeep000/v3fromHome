@@ -3,7 +3,7 @@
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 
-interface KuikwitButtonProps {
+interface ButtonProps {
   type?: "button" | "reset" | "submit" | undefined;
   color?:
     | "inherit"
@@ -15,10 +15,11 @@ interface KuikwitButtonProps {
     | "warning";
   variant: "text" | "contained" | "outlined";
   size: "small" | "medium" | "large";
-  circular: boolean;
+  circular?: boolean;
   children: React.ReactNode;
-  handleClick: (e: React.MouseEvent<HTMLElement>) => void;
+  handleClick?: (e: React.MouseEvent<HTMLElement>) => void;
   sx?: React.CSSProperties;
+  className?: string;
 }
 
 const KuikwitButton = ({
@@ -30,7 +31,8 @@ const KuikwitButton = ({
   sx,
   handleClick,
   type,
-}: KuikwitButtonProps) => {
+  className,
+}: ButtonProps) => {
   const defaultSx: React.CSSProperties = {
     fontSize: "12px",
     fontWeight: 400,
@@ -40,7 +42,10 @@ const KuikwitButton = ({
 
   return (
     <Button
+      disableRipple
+      disableElevation
       type={type}
+      className={className}
       color={color}
       variant={variant}
       size={size}
@@ -54,11 +59,10 @@ const KuikwitButton = ({
   );
 };
 
-// Setting default values for the props of KuikwitButton
 KuikwitButton.defaultProps = {
   size: "medium",
   variant: "contained",
-  color: "white",
+  color: "primary",
   circular: false,
   type: "button",
 };

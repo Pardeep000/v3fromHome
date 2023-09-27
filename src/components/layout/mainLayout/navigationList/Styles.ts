@@ -2,13 +2,7 @@ import { makeStyles } from "tss-react/mui";
 
 const useStyles = makeStyles()((theme) => ({
   root: {
-    transition: "all .2s ease-in-out",
-    background: theme.palette.primary.main,
-    color: theme.palette.secondary.dark,
-    '&[aria-controls="menu-list-grow"],&:hover': {
-      background: theme.palette.secondary.main,
-      color: theme.palette.primary.main,
-    },
+    display: "flex",
   },
   label: {
     color: "#fff",
@@ -167,7 +161,6 @@ const useStyles = makeStyles()((theme) => ({
     opacity: 1,
     textDecoration: "none",
     color: "red",
-    // marginLeft: 45,
   },
   logoutOpen: {
     opacity: 1,

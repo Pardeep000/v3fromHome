@@ -15,9 +15,11 @@ const EmailConfirm = Loadable(
 );
 const InviteUser = Loadable(lazy(() => import("src/pages/auth/InviteUser")));
 
-const Dashboard = Loadable(lazy(() => import("../pages/dashboard/Dashboard")));
+const Dashboard = Loadable(lazy(() => import("../pages/dashboard")));
 
 const Users = Loadable(lazy(() => import("../pages/users")));
+
+const Reports = Loadable(lazy(() => import("../pages/reports")));
 
 const routes: RouteObject[] = [
   {
@@ -74,6 +76,19 @@ const routes: RouteObject[] = [
         element: (
           <MainLayout>
             <Dashboard />
+          </MainLayout>
+        ),
+      },
+    ],
+  },
+  {
+    path: "/reports",
+    children: [
+      {
+        index: true,
+        element: (
+          <MainLayout>
+            <Reports />
           </MainLayout>
         ),
       },

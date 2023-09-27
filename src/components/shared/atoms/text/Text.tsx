@@ -2,120 +2,46 @@
 /* eslint-disable react/require-default-props */
 import React from "react";
 import Typography from "@mui/material/Typography";
-import theme from "src/theme";
+import useStyles from "./Styles";
 
 interface Props {
   text: string;
   color?: string;
 }
+interface TypoProps {
+  children: React.ReactNode;
+  className: string;
+}
 
 export const Text: React.FC<Props> = ({ text }) => {
-  return (
-    <Typography
-      sx={{
-        fontWeight: 400,
-        [theme.breakpoints.up("md")]: {
-          fontSize: "0.875rem",
-        },
-        [theme.breakpoints.up("sm")]: {
-          fontSize: "0.75rem",
-        },
-        lineHeight: "20px",
-        textAlign: "center",
-        color: theme.palette.text.secondary,
-      }}
-    >
-      {text}
-    </Typography>
-  );
+  const { classes } = useStyles();
+  return <Typography className={classes.text}>{text}</Typography>;
 };
 
 export const Title: React.FC<Props> = ({ text }) => {
-  return (
-    <Typography
-      sx={{
-        fontWeight: 500,
-        fontSize: "14px",
-        lineHeight: "18px",
-        color: "black",
-      }}
-    >
-      {text}
-    </Typography>
-  );
+  const { classes } = useStyles();
+
+  return <Typography className={classes.title}>{text}</Typography>;
 };
 
 export const Title12500: React.FC<Props> = ({ text }) => {
-  return (
-    <Typography
-      sx={{
-        fontWeight: 500,
-        fontSize: "12px",
-        lineHeight: "18px",
-        color: "black",
-      }}
-    >
-      {text}
-    </Typography>
-  );
+  const { classes } = useStyles();
+
+  return <Typography className={classes.title12500}>{text}</Typography>;
 };
 
 export const Title14500: React.FC<Props> = ({ text }) => {
-  return (
-    <Typography
-      sx={{
-        fontWeight: 500,
-        fontSize: "14px",
-        lineHeight: "18px",
-        color: "black",
-      }}
-    >
-      {text}
-    </Typography>
-  );
+  const { classes } = useStyles();
+
+  return <Typography className={classes.title14500}>{text}</Typography>;
 };
 
-export const Title10500: React.FC<Props> = ({ color, text }) => {
-  return (
-    <Typography
-      sx={{
-        fontWeight: 500,
-        fontSize: "10px",
-        lineHeight: "15px",
-        color,
-      }}
-    >
-      {text}
-    </Typography>
-  );
-};
+export const ContentSmall: React.FC<TypoProps> = ({ className, children }) => {
+  const { classes } = useStyles();
 
-export const ContentSmall: React.FC<Props> = ({ text }) => {
   return (
-    <Typography
-      sx={{
-        fontWeight: 400,
-        fontSize: "12px",
-        lineHeight: "15px",
-        color: theme.palette.text.secondary,
-      }}
-    >
-      {text}
-    </Typography>
-  );
-};
-
-export const EmailText: React.FC<Props> = ({ text }) => {
-  return (
-    <Typography
-      sx={{
-        fontWeight: 500,
-        fontSize: "14px",
-        lineHeight: "20px",
-        color: theme.palette.text.primary,
-      }}
-    >
-      {text}
+    <Typography className={`${classes.contentSmall} ${className}`}>
+      {children}
     </Typography>
   );
 };

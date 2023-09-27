@@ -1,4 +1,4 @@
-export interface backendErrorProps {
+export interface BackendErrorProps {
   oldPassword: string;
   newPassword: string;
   confirmedPassword: string;
@@ -30,7 +30,7 @@ export interface EditDetailProp {
   __typename: string;
 }
 
-export interface userdataProp {
+export interface UserdataProp {
   confirmPassword: string;
   email: string;
   firstName?: string;
@@ -46,7 +46,7 @@ export interface userdataProp {
   comments: number;
 }
 
-export interface pagePropdata {
+export interface PagePropdata {
   accessToken: string;
   id: string;
   name: string;

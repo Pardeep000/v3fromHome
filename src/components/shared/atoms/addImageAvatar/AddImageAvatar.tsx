@@ -36,3 +36,9 @@ const AddImageAvatar: React.FC<CustomAvatarProps> = ({
 };
 
 export default AddImageAvatar;
+
+AddImageAvatar.defaultProps = {
+  sx: {},
+  id: "",
+  handleLoad: "",
+};

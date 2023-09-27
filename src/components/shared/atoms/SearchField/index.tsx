@@ -5,18 +5,16 @@ import useStyles, { StyledInputBase } from "./Styles";
 
 interface Props {
   type?: string;
-  value?: string;
   placeholder?: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  fieldStyleClass: string;
+  className: string;
 }
 
 const SearchField: React.FC<Props> = ({
   type,
-  value,
   onChange,
   placeholder,
-  fieldStyleClass,
+  className,
 }: Props) => {
   const { classes } = useStyles();
   const debounceFn = _.debounce(onChange, 1000);
@@ -28,9 +26,8 @@ const SearchField: React.FC<Props> = ({
 
       <StyledInputBase
         placeholder={placeholder}
-        className={fieldStyleClass}
+        className={className}
         type={type}
-        value={value}
         onChange={debounceFn}
         inputProps={{ "aria-label": "search" }}
       />
@@ -39,3 +36,9 @@ const SearchField: React.FC<Props> = ({
 };
 
 export default SearchField;
+
+SearchField.defaultProps = {
+  type: "",
+  // value: "",
+  placeholder: "",
+};

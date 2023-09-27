@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material/styles";
 import { Box, CssBaseline } from "@mui/material";
-import Header from "src/components/layout/mainLayout/header/Header";
-import NavigationList from "src/components/layout/mainLayout/navigationList/NavigationList";
+import Header from "src/components/layout/mainLayout/header";
+import NavigationList from "src/components/layout/mainLayout/navigationList";
 import type { FC, ReactNode } from "react";
 import Main from "src/components/layout/mainLayout/main/Main";
 

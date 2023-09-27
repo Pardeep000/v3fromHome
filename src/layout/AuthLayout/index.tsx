@@ -7,8 +7,12 @@ interface IProps {
 const AuthLayout = ({ children }: IProps) => {
   return (
     <Grid container>
-      <Grid item>{/* Add code for left part of auth screens */}</Grid>
-      <Grid item>{children}</Grid>
+      <Grid item md={6}>
+        {/* Add code for left part of auth screens */}
+      </Grid>
+      <Grid item md={6}>
+        {children}
+      </Grid>
     </Grid>
   );
 };

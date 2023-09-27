@@ -11,11 +11,18 @@ import {
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
+import VirtualizedList from "src/components/shared/atoms/VirtualizedList";
 
-import FixedVirtualizedList from "../FixedVirtualizedList";
 import useStyles from "./Styles";
 
-const Index = () => {
+const obj = {
+  id: "587",
+  name: "Cable TV & Internet Bundles",
+};
+
+const pagesList = Array.from({ length: 5 }, () => obj);
+
+const DetailMode = () => {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const { classes } = useStyles();
 
@@ -157,25 +164,11 @@ const Index = () => {
           )}
         </Box>
         <Collapse in={expanded} timeout="auto" unmountOnExit>
-          {/* {getSpecificPagesLoading} */}
-          {/* {!getSpecificPagesLoading && (
-            <FixedVirtualizedList data={pagesNames} />
-          )} */}
-          {true && (
-            <FixedVirtualizedList
-              data={[
-                {
-                  id: "587",
-                  name: "Cable TV & Internet Bundles",
-                },
-                { id: "588", name: "Satellite Cable" },
-              ]}
-            />
-          )}
+          <VirtualizedList data={pagesList} />
         </Collapse>
       </Box>
     </Box>
   );
 };
 
-export default Index;
+export default DetailMode;

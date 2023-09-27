@@ -25,12 +25,10 @@ const theme = createTheme({
   breakpoints: { ...breakpoints },
   palette: {
     primary: {
-      // Purple and green play nicely together.
       main: "#4D1277",
       light: "#E6D9EC",
     },
     secondary: {
-      // This is green.A700 as hex.
       main: "#6BE900",
       dark: "#777777",
     },
@@ -49,7 +47,7 @@ const theme = createTheme({
       main: "rgba(240, 52, 52, 1)",
     },
     info: {
-      main: "#A0A0A0",
+      main: "#F5F5F5",
     },
   },
   typography: {

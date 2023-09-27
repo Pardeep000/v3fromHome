@@ -1,18 +1,25 @@
 import React from "react";
 
-const LinkIcon = (props) => {
+interface IconProps {
+  width?: number;
+  height?: number;
+  iconClass?: string;
+  color?: string;
+}
+
+const LinkIcon: React.FC<IconProps> = ({ width, height, iconClass, color }) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 24 24"
-      stroke={props.color}
+      stroke={color}
       strokeWidth={2}
       fill="none"
-      width={props.width}
-      height={props.height}
+      width={width}
+      height={height}
       strokeLinecap="round"
       strokeLinejoin="round"
-      className={`${props.class}feather feather-link`}
+      className={`${iconClass}feather feather-link`}
     >
       <path
         fill="none"
@@ -28,8 +35,8 @@ const LinkIcon = (props) => {
 
 LinkIcon.defaultProps = {
   width: 15,
-  isBorder: false,
-  class: "align-self-center",
+  // isBorder: false,
+  iconClass: "align-self-center",
   color: "black",
   height: 15,
 };

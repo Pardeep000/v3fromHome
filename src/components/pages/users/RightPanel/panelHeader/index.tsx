@@ -1,17 +1,21 @@
 import React from "react";
 import { Box, Divider, Typography, Switch } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { useApi } from "src/pages/users/ApiContext";
+import UseContext from "src/components/context/users/UseContext";
 import useStyles from "./Style";
 
-const index = ({ edit, setEdit }) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+interface IdData {
+  edit: boolean;
+  setEdit: (value: boolean) => void;
+}
+
+const Index: React.FC<IdData> = ({ edit, setEdit }) => {
   const { classes } = useStyles();
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const contextData = useApi();
+  const contextData = UseContext();
 
   const closePanel = () => {
-    contextData.controlRightPanel(false);
+    // contextData.controlRightPanel(false);
+    if (contextData) contextData.setShowRightPanel(false);
   };
   return (
     <>
@@ -45,4 +49,4 @@ const index = ({ edit, setEdit }) => {
   );
 };
 
-export default index;
+export default Index;

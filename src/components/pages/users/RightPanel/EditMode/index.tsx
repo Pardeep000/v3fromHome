@@ -10,34 +10,35 @@ import {
   CircularProgress,
   FormHelperText,
   Button,
-  List,
-  ListItem,
-  ListItemButton,
 } from "@mui/material";
 
 import AddImageAvatar from "src/components/shared/atoms/addImageAvatar/AddImageAvatar";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-//
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
-
 import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
-import { FormValuesProps, backendErrorProps, pagePropdata } from "./Types";
+import VirtualizedList from "src/components/shared/atoms/VirtualizedList";
+import { BackendErrorProps } from "./Types";
 
 import useStyles from "./Styles";
 
-const Index = () => {
+const obj = {
+  id: "587",
+  name: "Cable TV & Internet Bundles",
+};
+
+const pagesList = Array.from({ length: 5 }, () => obj);
+
+const EditMode = () => {
   const { classes } = useStyles();
   const [expanded, setExpanded] = useState(false);
 
   const [file, setFile] = useState<any>(null);
-  const [newImageUploaded, setNewImageUploaded] = useState(false);
+  const [, setNewImageUploaded] = useState(false);
   const hiddenFileInput = useRef<HTMLInputElement | null>(null);
 
-  const [backendError, setBackendError] = useState<backendErrorProps | null>(
-    null,
-  );
+  const [backendError] = useState<BackendErrorProps | null>(null);
 
   const openFileUpload = () => {
     setFile(null);
@@ -65,25 +66,28 @@ const Index = () => {
     event: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const val = event.target.value;
-    const file = event.target.files?.[0];
+    const file2 = event.target.files?.[0];
 
-    const size = file?.size ? file?.size / 1024 / 1024 : 0;
+    const size = file2?.size ? file2.size / 1024 / 1024 : 0;
     const regex = /(\.jpg|\.jpeg|\.png)$/i;
     if (!regex.exec(val)) {
-      error("File type must be JPEG or PNG");
+      // error for snackbar
+      // error("File type must be JPEG or PNG");
       return;
     }
     if (size > 1) {
-      error("File size exceeded 1MB, consider optimizing your image");
+      // error for snackbar
+      // error("File size exceeded 1MB, consider optimizing your image");
       return;
     }
-    if (file) {
-      setFile(file);
+    if (file2) {
+      setFile(file2);
     }
   };
-  // formik
 
-  const [initialFormikValues, setInitialFormikValues] = useState({
+  // to be used later on
+  // const [initialFormikValues, setInitialFormikValues] = useState({
+  const [initialFormikValues] = useState({
     name: "null name",
     pname: "",
     title: "",
@@ -104,10 +108,11 @@ const Index = () => {
     chatlimit: Yup.number().integer().required("chat-limit is required"),
     rolelink: Yup.string().required("status is required"),
   });
-  const handleFormikSubmit = async (
-    FormValues: FormValuesProps,
-    formikHelpers: any,
-  ) => {};
+  const handleFormikSubmit = async () =>
+    // to be used but just for removing error now
+    // FormValues: FormValuesProps,
+    // formikHelpers: any,
+    {};
   const formik = useFormik({
     initialValues: initialFormikValues,
     validationSchema: formikValidationSchema,
@@ -126,10 +131,11 @@ const Index = () => {
       .required("please confirm your password"),
   });
 
-  const passwordHandleSubmit = async (
-    values: PasswordProps,
-    formikHelpers: any,
-  ) => {};
+  const passwordHandleSubmit = async () =>
+    // to be used but just for removing error now
+    // values: PasswordProps,
+    // formikHelpers: any,
+    {};
   const formik2 = useFormik({
     initialValues: initialFormikValues,
     validationSchema: passwordValidationSchema,
@@ -425,7 +431,8 @@ const Index = () => {
           className={classes.submitButton}
           onClick={formik2.handleSubmit}
         >
-          Save {true ? <CircularProgress /> : ""}
+          {/* Save {true ? <CircularProgress /> : ""} */}
+          Save <CircularProgress />
         </Button>
       </Box>
 
@@ -554,7 +561,7 @@ const Index = () => {
             paddingRight: "10px",
             cursor: "pointer",
           }}
-          //   onClick={() => setExpanded(!expanded)}
+          onClick={() => setExpanded(!expanded)}
         >
           <Typography variant="subtitle2" className={classes.collapseText}>
             Chat Channels
@@ -575,6 +582,7 @@ const Index = () => {
               bgcolor: "background.paper",
             }}
           >
+            <VirtualizedList data={pagesList} />
             {/* <FixedSizeList height={(allpagesdata.length + 2) * 20} width="100%" itemSize={54} itemCount={allpagesdata.length} overscanCount={5} itemData={data}> */}
             {/* <List
               sx={{
@@ -664,7 +672,7 @@ const Index = () => {
           // type="button"
           variant="contained"
           color="primary"
-          onClick={() => handleFormikSubmit(formik.values, formik)}
+          // onClick={() => handleFormikSubmit(formik.values, formik)}
           className={classes.saveButton}
           // onClick={handleFormikSubmit}
           //   disabled={updateMutationLoading}
@@ -681,4 +689,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default EditMode;

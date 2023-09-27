@@ -9,8 +9,6 @@ const Main = styled("main")(({ theme }) => ({
     marginLeft: 80,
     marginRight: 20,
     marginTop: 100,
-    // marginBottom: 20,
-    // border: "1px solid red",
     justifyContent: "center",
     alignItems: "center",
     borderBottomLeftRadius: 0,
